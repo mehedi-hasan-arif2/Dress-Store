@@ -90,6 +90,10 @@
 }
 
 /* Cart Count Badge */
+.cart-box {
+    position: relative;
+}
+
 #cart-count {
     position: absolute;
     top: -10px;
@@ -495,7 +499,7 @@
     color: #fff;
 }
 
-/* Start of Premium Product Section */
+/* Start of feature Product Section */
 .featured-products {
     padding: 80px 0;
     background: linear-gradient(150deg, #1a1c2c, #4a192c, #1a1c2c);
@@ -1010,14 +1014,17 @@
 .footer-bottom {
     padding: 20px 0 40px;
     text-align: center;
+    position: relative; 
 }
 
-.bottom-line {
-    width: 96%; 
-    max-width: 1400px; 
+.footer-bottom::before {
+    content: "";
+    display: block;
+    width: 96%;
+    max-width: 1400px;
     height: 1px;
     background: rgba(212, 145, 255, 0.2);
-    margin: 0 auto 30px; 
+    margin: 0 auto 30px;
 }
 
 .bottom-wrap p {

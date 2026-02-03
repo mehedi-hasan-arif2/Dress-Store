@@ -1,0 +1,36 @@
+/* All Products Data Storage */
+const products = [
+
+   // New Arrivals Section (10 Products)
+    { id: 1, category: "new-arrivals", name: "Hand-Stitched Silk Panjabi", price: 1000, oldPrice: 2200, img: "assests/products/new-arrivals/1.jpg", badge: "New", catName: "Men's Premium" },
+    { id: 2, category: "new-arrivals", name: "Designer Jamdani Saree", price: 4500, oldPrice: 6600, img: "assests/products/new-arrivals/2.jpg", badge: "Trending", catName: "Women's Luxury" },
+    { id: 3, category: "new-arrivals", name: "Cotton Block Print Kurti", price: 1550, img: "assests/products/new-arrivals/3.jpg", catName: "Women's Wear" },
+    { id: 4, category: "new-arrivals", name: "Formal Slim Fit Shirt", price: 800, img: "assests/products/new-arrivals/4.jfif", badge: "Hot", catName: "Men's Fashion" },
+    { id: 5, category: "new-arrivals", name: "Royal Festive Panjabi", price: 2400, oldPrice: 3200, img: "assests/products/new-arrivals/5.jpg", catName: "Men's Premium" },
+    { id: 6, category: "new-arrivals", name: "Exclusive Silk Kameez", price: 3100, img: "assests/products/new-arrivals/6.jpeg", badge: "New", catName: "Women's Luxury" },
+    { id: 7, category: "new-arrivals", name: "Boys Cotton Set", price: 1250, img: "assests/products/new-arrivals/7.webp", catName: "Kids Collection" },
+    { id: 8, category: "new-arrivals", name: "Premium Polo Shirt", price: 950, img: "assests/products/new-arrivals/8.jpg", catName: "Men's Casual" },
+    { id: 9, category: "new-arrivals", name: "Simple Cotton Panjabi", price: 2500, img: "assests/products/new-arrivals/9.jpg", catName: "Men's Premium" },
+    { id: 10, category: "new-arrivals", name: "Party Wear Gown", price: 5200, img: "assests/products/new-arrivals/10.jpg", badge: "Exclusive", catName: "Women's Collection" },
+    
+    // Men Section 
+     { id: 11, category: "men", name: "Luxury Kabli Set - Deep Blue", price: 2050, oldPrice: 3400, img: "assests/products/men/1.webp", catName: "Men's Premium" },
+     { id: 12, category: "men", name: "Semi-Formal Slim Fit Shirt", price: 1150, img: "assests/products/men/2.webp", catName: "Men's Casual" },
+     { id: 13, category: "men", name: "Cotton Embroidery Panjabi", price: 2400, img: "assests/products/men/3.jpg", catName: "Men's Ethnic" },
+    
+    // Women Section
+     { id: 14, category: "women", name: "Dhakai Jamdani Silk Saree", price: 5500, oldPrice: 6200, img: "assests/products/women/1.webp", catName: "Women's Luxury" },
+     { id: 15, category: "women", name: "Embroidered Cotton Three Piece", price: 2350, img: "assests/products/women/2.jpg", catName: "Women's Ethnic" },
+     { id: 16, category: "women", name: "Digital Print Lawn Kurti", price: 1500, img: "assests/products/women/3.jpg", catName: "Women's Casual" },
+    
+    // Kids Section
+     { id: 17, category: "kids", name: "Boys Cotton Embroidery Panjabi", price: 1200, oldPrice: 1800, img: "assests/products/kids/1.jpg", catName: "Kids Ethnic" },
+     { id: 18, category: "kids", name: "Girls Designer Silk Frock", price: 2100, img: "assests/products/kids/2.jpg", catName: "Kids Party Wear" },
+     { id: 19, category: "kids", name: "Premium Cotton Print T-Shirt", price: 750, img: "assests/products/kids/3.webp", catName: "Kids Casual" },
+    
+    // Combo Section
+     { id: 20, category: "combo", name: "Premium Panjabi & Aligarhi Pajama Set", price: 2850, oldPrice: 3500, img: "assests/products/combo/1.webp", badge: "Best Value", catName: "Men's Combo" },
+     { id: 21, category: "combo", name: "Matching Couple Set (Saree & Panjabi)", price: 5500, oldPrice:  6200, img: "assests/products/combo/2.jpg", badge: "Couple Deal", catName: "Festive Combo" },
+     { id: 22, category: "combo", name: "Full Family Combo (Dad-Mom-Kid)", price: 6300, img: "assests/products/combo/3.webp", catName: "Family Pack" }
+     
+];

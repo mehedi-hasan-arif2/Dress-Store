@@ -652,24 +652,27 @@
     color: #000;
 }
 
-/* View All Button Styling */
+/* Start of View All Button*/
 .view-all-container {
     text-align: center;
     margin-top: 60px;
+    width: 100%; 
+    display: none; 
 }
 
 .view-all-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     padding: 15px 35px;
     background: linear-gradient(150deg, #1a1c2c, #4a192c, #1a1c2c);
     border: 1px solid #d491ff;
     color: #fff;
-    text-decoration: none;
     font-weight: 700;
     border-radius: 50px;
     transition: 0.4s;
+    cursor: pointer;
 }
 
 .view-all-btn:hover {

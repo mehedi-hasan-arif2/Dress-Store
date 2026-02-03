@@ -1,4 +1,4 @@
-/* All Products Data Storage */
+/* Feature Collections Products Data */
 const products = [
 
    // New Arrivals Section (10 Products)
@@ -34,3 +34,16 @@ const products = [
      { id: 22, category: "combo", name: "Full Family Combo (Dad-Mom-Kid)", price: 6300, img: "assests/products/combo/3.webp", catName: "Family Pack" }
      
 ];
+
+
+/* Flash Sale Product Data */
+const flashSaleData = {
+    id: "fs-01",
+    name: "Premium Handcrafted T-Shirt",
+    badge: "Limited Edition",
+    price: 300,
+    oldPrice: 600,
+    description: "Experience the ultimate comfort with our premium cotton t-shirt, designed for the modern lifestyle.",
+    image: "assests/products/combo/flesh sale.jfif",
+    endDate: "February 20, 2028 00:00:00"
+};

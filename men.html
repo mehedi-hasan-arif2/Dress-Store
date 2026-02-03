@@ -59,6 +59,46 @@
             View More Products <i class="fas fa-layer-group"></i>
         </button>
     </div>
+
+    <!-- Quick View Modal Part  -->
+    <div id="quick-view-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" id="close-quick-modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img src="" alt="" id="qv-img">
+                </div>
+                <div class="modal-info">
+                    <span class="modal-badge" id="qv-badge">New Arrival</span>
+                    <h3 id="qv-title">Product Name</h3>
+                    <div class="modal-price">
+                        <span class="new-price" id="qv-price">৳ ০</span>
+                        <span class="old-price" id="qv-old-price"></span>
+                    </div>
+                    <p id="qv-desc">Discover the premium quality and craftsmanship in every detail of this exclusive piece.</p>
+                    
+                    <div class="size-wrapper">
+                        <p>Select Size:</p>
+                        <div class="size-options">
+                            <button class="size-btn">S</button>
+                            <button class="size-btn active">M</button>
+                            <button class="size-btn">L</button>
+                            <button class="size-btn">XL</button>
+                        </div>
+                    </div>
+
+                    <div class="action-wrapper">
+                        <div class="qty-control">
+                            <button class="qty-minus" id="qv-minus">-</button>
+                            <input type="number" value="1" readonly id="qv-qty">
+                            <button class="qty-plus" id="qv-plus">+</button>
+                        </div>
+                        <button class="modal-add-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
     </main>

@@ -207,6 +207,46 @@
             View More Products <i class="fas fa-layer-group"></i>
         </button>
     </div>
+    
+    <!-- modal for quick view -->
+    <div id="quick-view-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" id="close-quick-modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img src="" alt="" id="qv-img">
+                </div>
+                <div class="modal-info">
+                    <span class="modal-badge" id="qv-badge">New Arrival</span>
+                    <h3 id="qv-title">Product Name</h3>
+                    <div class="modal-price">
+                        <span class="new-price" id="qv-price">৳ ০</span>
+                        <span class="old-price" id="qv-old-price"></span>
+                    </div>
+                    <p id="qv-desc">Discover the premium quality and craftsmanship in every detail of this exclusive piece.</p>
+                    
+                    <div class="size-wrapper">
+                        <p>Select Size:</p>
+                        <div class="size-options">
+                            <button class="size-btn">S</button>
+                            <button class="size-btn active">M</button>
+                            <button class="size-btn">L</button>
+                            <button class="size-btn">XL</button>
+                        </div>
+                    </div>
+
+                    <div class="action-wrapper">
+                        <div class="qty-control">
+                            <button class="qty-minus" id="qv-minus">-</button>
+                            <input type="number" value="1" readonly id="qv-qty">
+                            <button class="qty-plus" id="qv-plus">+</button>
+                        </div>
+                        <button class="modal-add-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- flash sale section -->
@@ -217,47 +257,72 @@
                 <div class="badge-container">
                     <span class="modern-sale-badge">LIMITED TIME OFFER</span>
                 </div>
-                <h2 class="sale-title">Flash Deal of the <span class="highlight">Season</span></h2>
-                <p class="sale-desc">Elevate your style with our handcrafted premium collection. Unmatched quality, now at half the price.</p>
+                <h2 class="sale-title" id="fs-display-title">Flash Deal of the <span class="highlight">Season</span></h2>
+                <p class="sale-desc" id="fs-display-desc">Elevate your style with our handcrafted premium collection. Unmatched quality, now at half the price.</p>
 
                 <div class="modern-countdown">
-                    <div class="timer-box-modern">
-                        <span id="days">12</span>
-                        <p>Days</p>
-                    </div>
-                    <div class="timer-box-modern">
-                        <span id="hours">08</span>
-                        <p>Hours</p>
-                    </div>
-                    <div class="timer-box-modern">
-                        <span id="mins">45</span>
-                        <p>Mins</p>
-                    </div>
-                    <div class="timer-box-modern">
-                        <span id="secs">22</span>
-                        <p>Secs</p>
-                    </div>
+                    <div class="timer-box-modern"><span id="days">00</span><p>Days</p></div>
+                    <div class="timer-box-modern"><span id="hours">00</span><p>Hours</p></div>
+                    <div class="timer-box-modern"><span id="mins">00</span><p>Mins</p></div>
+                    <div class="timer-box-modern"><span id="secs">00</span><p>Secs</p></div>
                 </div>
 
-                <button class="shop-electric-btn">
+                <button class="shop-electric-btn" id="grab-deal-btn">
                     <span>GRAB THE DEAL</span>
                     <i class="fa-solid fa-bolt-lightning electric-icon"></i>
-                  <div class="shimmer-line"></div>
+                    <div class="shimmer-line"></div>
                 </button>
             </div>
 
-           <div class="sale-visual-side">
-             <div class="electric-orbit-container">
-             <div class="orbit-ring ring-1"></div>
-             <div class="orbit-ring ring-2"></div>
-        
-           <div class="image-mask-circle">
-             <img src="assests/products/combo/flesh sale.jfif" alt="Flash Product" class="floating-deal-img">
-           </div>
-        
-        <div class="base-glow"></div>
+            <div class="sale-visual-side">
+                <div class="electric-orbit-container">
+                    <div class="orbit-ring ring-1"></div>
+                    <div class="orbit-ring ring-2"></div>
+                    <div class="image-mask-circle">
+                        <img src="" alt="Flash Product" class="floating-deal-img" id="fs-main-img">
+                    </div>
+                    <div class="base-glow"></div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
+    <div id="flash-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal-btn">&times;</button>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img src="" alt="Flash Product" id="modal-fs-img">
+                </div>
+                <div class="modal-info">
+                    <span class="modal-badge" id="modal-fs-badge">Limited Edition</span>
+                    <h3 id="modal-fs-title">Premium Handcrafted T-Shirt</h3>
+                    <div class="modal-price">
+                        <span class="new-price" id="modal-fs-price">৳ ৩০০</span>
+                        <span class="old-price" id="modal-fs-old-price">৳ ৬০০</span>
+                    </div>
+                    <p id="modal-fs-desc">Experience the ultimate comfort with our premium cotton t-shirt.</p>
+                    
+                    <div class="size-wrapper">
+                        <p>Select Size:</p>
+                        <div class="size-options">
+                            <button class="size-btn">S</button>
+                            <button class="size-btn active">M</button>
+                            <button class="size-btn">L</button>
+                            <button class="size-btn">XL</button>
+                        </div>
+                    </div>
+
+                    <div class="action-wrapper">
+                        <div class="qty-control">
+                            <button class="qty-minus">-</button>
+                            <input type="number" value="1" readonly id="modal-fs-qty">
+                            <button class="qty-plus">+</button>
+                        </div>
+                        <button class="modal-add-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

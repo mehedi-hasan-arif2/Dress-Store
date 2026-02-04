@@ -46,6 +46,14 @@
     </nav>
 </header>
 
+ <!-- Search Function -->
+<div id="search-bar" class="search-bar-container">
+    <div class="search-inner">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="search-input" placeholder="Search" autocomplete="off">
+    </div>
+</div>
+
     <main id="main-content">
      <!-- featured products section -->
 <section class="featured-products container-padding">
@@ -151,25 +159,112 @@
     </div>
 </footer>
 
-<div id="wishlist-drawer" class="wishlist-modal">
-    <div class="wishlist-content">
-        <div class="wishlist-header">
+<!-- Wish List Section -->
+<div class="bag" id="wishlist-drawer">
+    <div class="bag-content">
+
+        <div class="bag-header">
             <h3>My Wishlist</h3>
-            <button class="close-wishlist" id="close-wishlist">&times;</button>
+            <button class="bag-close" id="close-wishlist">&times;</button>
         </div>
         
-        <div class="wishlist-body">
-            <div class="empty-wishlist-box">
+        <div class="bag-body">
+            <div class="bag-empty empty-wishlist-box">
                 <i class="fa-regular fa-heart"></i>
                 <p>Your list is currently empty!</p>
-                <a href="#shop-category" class="wishlist-shop-btn" id="continue-shopping">Continue Shopping</a>
+                <a href="#shop-category" class="bag-shop-btn" id="continue-shopping">
+                    Continue Shopping
+                </a>
             </div>
+
             <div id="wishlist-items-container"></div>
         </div>
 
-        <div class="wishlist-footer">
-            <button class="wishlist-clear-all-btn" id="clear-wishlist">Clear All Wishlist</button>
+        <div class="bag-footer">
+            <button class="bag-clear-btn" id="clear-wishlist">
+                Clear All Wishlist
+            </button>
         </div>
+
+    </div>
+</div>
+
+<!-- Cart Section -->
+<div class="bag" id="cart-drawer"> 
+    <div class="bag-content">
+
+        <div class="bag-header">
+            <h3>
+                Shopping Cart (<span id="cart-count-drawer">0</span>)
+            </h3>
+            <button class="bag-close" id="close-cart-drawer">&times;</button>
+        </div>
+        
+        <div class="bag-body">
+            <div class="bag-empty empty-cart-box" id="empty-cart-msg">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <p>Your cart is empty!</p>
+                <a href="#shop-category" class="bag-shop-btn" id="cart-continue-shop">
+                    Shop Now
+                </a>
+            </div>
+
+            <div id="cart-items-container"></div>
+        </div>
+
+        <div class="bag-footer">
+            <div class="cart-total-container">
+                <div class="total-row">
+                   <span>Total Amount:</span>
+                   <span id="cart-total-amount">৳ 0</span>
+                </div>
+
+                <button class="btn-checkout" id="checkout-btn">
+                    Proceed to Checkout
+                </button>
+
+                <button class="btn-clear-cart" id="clear-cart">
+                    Clear Cart
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Cart Checkout Modal -->
+<div class="modal-overlay" id="checkout-modal" >
+    <div class="modal-content checkout-modal-width">
+        <button class="close-modal" id="close-checkout-modal">&times;</button>
+        <div class="checkout-header">
+            <h3>Complete Your Order</h3>
+            <p>Please provide your delivery & payment details</p>
+        </div>
+
+        <form id="order-form" class="checkout-form">
+            <div class="form-group">
+                <input type="text" id="cust-name" placeholder="Your Full Name" required class="modern-input">
+            </div>
+            <div class="form-group">
+                <input type="text" id="cust-address" placeholder="Full Delivery Address" required class="modern-input">
+            </div>
+            <div class="form-group">
+                <input type="tel" id="cust-phone" placeholder="Contact Number" required class="modern-input">
+            </div>
+
+            <div class="bkash-payment-card">
+                <div class="bkash-info">
+                    <img src="assests/icons/bkash 2.png" alt="bKash" class="bkash-logo">
+                    <p>Send Money to: <strong>01533648004</strong> (Personal)</p>
+                </div>
+                <input type="text" id="trx-id" placeholder="Transaction ID (TrxID)" required class="modern-input bkash-input">
+                <input type="number" id="last-digits" placeholder="Last 3 Digits of bKash Number" required class="modern-input bkash-input">
+            </div>
+
+            <button type="submit" class="whatsapp-place-order-btn">
+                <i class="fa-brands fa-whatsapp"></i> PLACE ORDER VIA WHATSAPP
+            </button>
+        </form>
     </div>
 </div>
 

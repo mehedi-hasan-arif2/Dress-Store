@@ -205,13 +205,13 @@ const countdown = () => {
 };
 setInterval(countdown, 1000);
 
-/* Global Event Handler */
+/* Global Event Handler (Consolidated) */
 document.addEventListener("click", (e) => {
-    // Quick View Toggle
+    // Quick View Open
     const viewBtn = e.target.closest(".quick-view-btn");
     if (viewBtn) openQuickView(parseInt(viewBtn.getAttribute("data-id")));
 
-    // Wishlist Logic
+    // Wishlist Toggle
     const wishBtn = e.target.closest(".wishlist-btn");
     if (wishBtn) {
         const id = parseInt(wishBtn.getAttribute("data-id"));
@@ -236,26 +236,26 @@ document.addEventListener("click", (e) => {
         document.querySelectorAll(".modal-overlay, #wishlist-drawer").forEach(el => el.classList.remove("active"));
     }
 
-    // Quantity Adjustment
+    // Quantity Counter Adjustment
     if (e.target.classList.contains("qty-plus") || e.target.classList.contains("qty-minus")) {
         const input = e.target.parentElement.querySelector("input");
         let val = parseInt(input.value);
         input.value = e.target.classList.contains("qty-plus") ? val + 1 : (val > 1 ? val - 1 : 1);
     }
 
-    // Size Selection
+    // Size Selection Reset Logic
     if (e.target.classList.contains("size-btn")) {
         e.target.parentElement.querySelectorAll(".size-btn").forEach(btn => btn.classList.remove("active"));
         e.target.classList.add("active");
     }
 
-    // Wishlist Drawer
+    // Open Wishlist Drawer
     if (e.target.closest('#wishlist-trigger')) {
         document.getElementById('wishlist-drawer').classList.add('active');
         renderWishlistItems();
     }
 
-    // Item Removal Logic
+    // Wishlist Item Removal
     if (e.target.classList.contains('remove-wishlist')) {
         const id = parseInt(e.target.getAttribute('data-id'));
         wishlist = wishlist.filter(item => item.id !== id);
@@ -266,6 +266,7 @@ document.addEventListener("click", (e) => {
         if(mainBtnIcon) mainBtnIcon.className = 'fa-regular fa-heart';
     }
 
+    // Clear All Wishlist
     if (e.target.id === 'clear-wishlist') {
         wishlist = [];
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -274,16 +275,33 @@ document.addEventListener("click", (e) => {
         document.querySelectorAll('.wishlist-btn i').forEach(i => i.className = 'fa-regular fa-heart');
     }
 
-    // Flash Sale Reset & Open 
+    // Flash Sale Grab Deal & Reset Logic
     const grabBtn = e.target.closest('#grab-deal-btn');
     if (grabBtn) {
+        // Reset qty
         const fsQty = document.querySelector("#flash-modal input");
         if(fsQty) fsQty.value = 1; 
+
+        // Reset size selection to first item
+        const sizeBtns = document.querySelectorAll("#fs-sizes-container .size-btn");
+        if(sizeBtns.length > 0) {
+            sizeBtns.forEach((btn, index) => {
+                btn.classList.remove("active");
+                if(index === 0) btn.classList.add("active");
+            });
+        }
         document.getElementById("flash-modal").classList.add("active");
+    }
+
+    // Integrated Search Closing Logic
+    const sBar = document.getElementById('search-bar');
+    const sTrigger = document.getElementById('search-trigger');
+    if (sBar && !sBar.contains(e.target) && e.target !== sTrigger) {
+        sBar.classList.remove('active');
     }
 });
 
-// Dynamic Search Engine 
+/* Dynamic Search Logic */
 const searchBar = document.getElementById('search-bar');
 const searchInput = document.getElementById('search-input');
 const searchTrigger = document.getElementById('search-trigger');
@@ -313,8 +331,161 @@ if (searchInput) {
     };
 }
 
-document.onclick = (e) => {
-    if (searchBar && !searchBar.contains(e.target) && e.target !== searchTrigger) {
-        searchBar.classList.remove('active');
+
+
+/* Start of Cart & Checkout Logic */
+
+let cart = JSON.parse(localStorage.getItem('cart_items')) || [];
+const WHATSAPP_NUMBER = "8801533648004";
+
+// Refresh UI Function
+function updateCartUI() {
+    const container = document.getElementById('cart-items-container');
+    const emptyBox = document.getElementById('empty-cart-msg');
+    const totalAmount = document.getElementById('cart-total-amount');
+    const cartCounts = document.querySelectorAll('#cart-count, #cart-count-drawer');
+
+    const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+    cartCounts.forEach(el => el.innerText = totalItems);
+
+    if (!container) return;
+
+    if (cart.length === 0) {
+        if (emptyBox) emptyBox.style.display = 'flex'; 
+        container.innerHTML = '';
+        totalAmount.innerText = '৳ ০';
+    } else {
+        if (emptyBox) emptyBox.style.display = 'none'; 
+        let totalBill = 0;
+
+        container.innerHTML = cart.map((item, index) => {
+            totalBill += item.price * item.qty;
+            return `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="item-info">
+                        <h4>${item.name}</h4>
+                        <p>Size: ${item.size} | Qty: ${item.qty}</p>
+                        <p class="item-price">৳ ${item.price * item.qty}</p>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${index})">&times;</button>
+                </div>
+            `;
+        }).join('');
+
+        totalAmount.innerText = `৳ ${totalBill}`;
     }
-};
+}
+
+// Add to Cart Logic (Unshift for Top Order)
+function addToCart(item) {
+    const existing = cart.find(p => p.id === item.id && p.size === item.size);
+    if (existing) {
+        existing.qty += item.qty;
+    } else {
+        cart.unshift(item); // Always top
+    }
+    saveAndRefresh();
+    document.getElementById('cart-drawer').classList.add('active');
+}
+
+// Global scope removal function
+window.removeFromCart = function(index) {
+    cart.splice(index, 1);
+    saveAndRefresh();
+}
+
+function saveAndRefresh() {
+    localStorage.setItem('cart_items', JSON.stringify(cart));
+    updateCartUI();
+}
+
+// All-In-One Click Handler (Wishlist, Flash Sale, Feature Section, Cart Drawers)
+document.addEventListener('click', (e) => {
+    const cartDrawer = document.getElementById('cart-drawer');
+
+    // 1. Cart Open/Close
+    if (e.target.closest('#cart-trigger')) cartDrawer.classList.add('active');
+    if (e.target.closest('#close-cart-drawer')) cartDrawer.classList.remove('active');
+
+    // 2. Feature Section "Add to Cart" Button
+    const featureAddBtn = e.target.closest('.add-to-cart-btn');
+    if (featureAddBtn) {
+        const id = parseInt(featureAddBtn.getAttribute('data-id'));
+        const product = products.find(p => p.id === id);
+        if (product) {
+            addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.img,
+                size: "M",
+                qty: 1
+            });
+        }
+    }
+
+    // 3. Modal Add Button (Quick View & Flash Sale)
+    const modalBtn = e.target.closest('.modal-add-btn');
+    if (modalBtn) {
+        const modal = modalBtn.closest('.modal-content');
+        const isFlash = modal.closest('#flash-modal');
+        const productObj = {
+            id: isFlash ? "fs-99" : (window.currentQuickViewId || Date.now()),
+            name: modal.querySelector('h3').innerText,
+            price: parseInt(modal.querySelector('.new-price, #qv-price, #modal-fs-price')?.innerText.replace(/\D/g, '') || 0),
+            image: modal.querySelector('img').src,
+            size: modal.querySelector('.size-btn.active')?.innerText || "M",
+            qty: parseInt(modal.querySelector('input')?.value) || 1
+        };
+        addToCart(productObj);
+    }
+
+    // 4. Wishlist to Cart
+    if (e.target.classList.contains('wishlist-add-cart')) {
+        const id = parseInt(e.target.getAttribute('data-id'));
+        const product = wishlist.find(p => p.id === id);
+        if(product) {
+            addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.img,
+                size: "M",
+                qty: 1
+            });
+        }
+    }
+
+    // 5. Clear Cart with Permission
+    if (e.target.id === 'clear-cart' || e.target.classList.contains('btn-clear-cart')) {
+        if (confirm("Are you sure you want to clear your cart?")) {
+            cart = [];
+            saveAndRefresh();
+        }
+    }
+
+    // 6. Checkout
+    if (e.target.id === 'checkout-btn' || e.target.classList.contains('btn-checkout')) {
+        if (cart.length === 0) return alert("Please add products first!");
+        document.getElementById('checkout-modal').classList.add('active');
+        cartDrawer.classList.remove('active');
+    }
+});
+
+// WhatsApp Order Engine
+const orderForm = document.getElementById('order-form');
+if (orderForm) {
+    orderForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('cust-name').value;
+        const address = document.getElementById('cust-address').value;
+        const totalBill = document.getElementById('cart-total-amount').innerText;
+        let itemDetails = cart.map((item, i) => `${i + 1}. ${item.name} (${item.size}) x${item.qty}`).join('\n');
+        const message = `🛍️ *Order Loom & Luxe*\nItems:\n${itemDetails}\nTotal: ${totalBill}\nName: ${name}\nAddress: ${address}`;
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+}
+
+// Run Initial UI
+updateCartUI();

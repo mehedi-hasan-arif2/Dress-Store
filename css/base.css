@@ -18,6 +18,11 @@
     box-sizing: border-box;
 }
 
+/* Utility */
+.hidden {
+    display: none;
+}
+
 body {
     background: var(--main-bg);
     color: var(--text-white);

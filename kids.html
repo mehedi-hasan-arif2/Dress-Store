@@ -28,39 +28,45 @@
             <li><a href="kids.html">Kids</a></li>
             <li><a href="combo.html">Combo</a></li>
         </ul>
-
-        <div class="nav-icons">
-            <img src="assests/icons/search.png" alt="Search" id="search-trigger">
-            <img src="assests/icons/wishlist.png" alt="Wishlist">
-             <div class="cart-box">
-                <img src="assests/icons/cart.png" alt="Cart" id="cart-trigger">
-                <span id="cart-count">0</span>
-            </div>
-        </div>
+    <div class="nav-icons">
+    <div class="icon-item" id="search-trigger">
+        <img src="assests/icons/search.png" alt="Search">
+    </div>
+    
+    <div class="icon-item wishlist-box" id="wishlist-trigger">
+        <img src="assests/icons/wishlist.png" alt="Wishlist">
+        <span id="wishlist-count">0</span>
+    </div>
+    
+    <div class="icon-item cart-box" id="cart-trigger">
+        <img src="assests/icons/cart.png" alt="Cart">
+        <span id="cart-count">0</span>
+    </div>
+</div>
     </nav>
 </header>
 
     <main id="main-content">
      <!-- featured products section -->
 <section class="featured-products container-padding">
-     <!-- Section Title Part  -->
+     <!-- Title -->
     <div class="section-title">
         <span class="sub-title">PREMIUM SELECTION</span>
         <h2>Kid's <span class="highlight">Wardrobe</span></h2>
     </div>
 
-     <!-- Product Grid Part  -->
+     <!-- Product Data -->
     <div class="product-grid" id="product-container">
         </div>
 
-     <!-- View Button Part  -->
+     <!-- View Button -->
     <div class="view-all-container" id="load-more-wrap" style="display: none;">
         <button type="button" class="view-all-btn" id="load-more-btn">
             View More Products <i class="fas fa-layer-group"></i>
         </button>
     </div>
 
-    <!-- Quick View Modal Part  -->
+    <!--  Quick View Modal Part  -->
     <div id="quick-view-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-modal" id="close-quick-modal">&times;</button>
@@ -79,12 +85,8 @@
                     
                     <div class="size-wrapper">
                         <p>Select Size:</p>
-                        <div class="size-options">
-                            <button class="size-btn">S</button>
-                            <button class="size-btn active">M</button>
-                            <button class="size-btn">L</button>
-                            <button class="size-btn">XL</button>
-                        </div>
+                         <div class="size-options" id="qv-sizes-container">
+                         </div>
                     </div>
 
                     <div class="action-wrapper">
@@ -148,6 +150,28 @@
         </div>
     </div>
 </footer>
+
+<div id="wishlist-drawer" class="wishlist-modal">
+    <div class="wishlist-content">
+        <div class="wishlist-header">
+            <h3>My Wishlist</h3>
+            <button class="close-wishlist" id="close-wishlist">&times;</button>
+        </div>
+        
+        <div class="wishlist-body">
+            <div class="empty-wishlist-box">
+                <i class="fa-regular fa-heart"></i>
+                <p>Your list is currently empty!</p>
+                <a href="#shop-category" class="wishlist-shop-btn" id="continue-shopping">Continue Shopping</a>
+            </div>
+            <div id="wishlist-items-container"></div>
+        </div>
+
+        <div class="wishlist-footer">
+            <button class="wishlist-clear-all-btn" id="clear-wishlist">Clear All Wishlist</button>
+        </div>
+    </div>
+</div>
 
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>

@@ -115,6 +115,14 @@
     z-index: 10;
 }
 
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 22px;
+    color: var(--text-white);
+    transition: var(--transition);
+}
+
 /* Start of Hero Slider Section */
 .hero-slider {
     position: relative;
@@ -1514,7 +1522,7 @@
     color: #333;
 }
 
-/* bKash Area  */
+/* bKash Area Styling */
 .bkash-payment-card {
     background: #fff0f5;
     padding: 15px;
@@ -1525,26 +1533,31 @@
 }
 
 .bkash-logo {
-    width: 85px;
+    width: 80px;
     margin-bottom: 8px;
 }
 
 .bkash-info p {
-    font-size: 1rem;
-    color: #000000; 
-    margin-bottom: 15px;
-    font-weight: 500;
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 12px;
 }
 
-.bkash-info strong {
-    color: #e2136e; 
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-
-.bkash-inputs {
+.bkash-payment-card {
     display: flex;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.bkash-info {
+    width: 100%; 
+}
+
+.bkash-input {
+    flex: 1; 
+    min-width: 140px; 
+    margin-bottom: 0; 
 }
 
 /* WhatsApp Button */
@@ -1934,3 +1947,287 @@
 }
 
 
+
+
+/* ==========================================================================
+                              Responsive Design
+   ========================================================================== */
+
+/* Desktop Device (1200px+) */
+@media screen and (min-width: 1200px) {
+    .nav-container {
+        max-width: 1320px;
+    }
+}
+
+ /* Tablet Device (577px - 992px) */
+
+/* Tablet & Mobile common  for Menu toggle */
+@media screen and (max-width: 992px) {
+    .nav-links {
+        display: none; 
+    }
+
+    .nav-links.active {
+        display: flex; 
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(26, 28, 44, 0.95);
+        padding: 20px 0;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Grids Adjustment */
+    .trust-grid,
+    .category-grid,
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero-slider {
+        height: 60vh;
+    }
+    .slide-item {
+      background-position: center; 
+      background-size: cover; 
+      background-repeat: no-repeat;
+    }
+    
+    .slide-content {
+      width: 90%; 
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4); 
+      border-radius: 15px;
+    }
+    
+    .slide-content h1 {
+        font-size: 32px;
+    }
+    
+    /* Flash Sale Section */
+    .sale-glass-card {
+        flex-direction: column;
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .sale-visual-side {
+        flex: 1;
+        margin-top: 40px;
+    }
+    
+    /* Modal Adjustment */
+    .modal-content {
+        width: 85%;
+        padding: 25px;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 40px;
+        text-align: left;
+        padding: 0 5%;
+    }
+
+    .brand-info {
+        grid-column: span 2; 
+        text-align: center;
+    }
+
+    .brand-info p {
+        max-width: 100%; 
+        margin: 0 auto 30px;
+    }
+
+    .f-logo {
+        margin: 0 auto 20px; 
+    }
+
+    .footer-col {
+        min-width: unset;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        text-align: center;
+    }
+
+    /* Social & Payment Icons  */
+    .f-social-icons, .f-payment {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .f-title {
+        margin-bottom: 20px;
+    }
+}
+
+/* Mobile Device (320px - 576px) */
+@media screen and (max-width: 576px) {
+    /* Header & Nav */
+    .header-area {
+        min-height: 70px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .nav-icons {
+        gap: 15px;
+    }
+
+    /* Hero Slider */
+    .slide-btns {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    /* Grids Adjustment */
+    .trust-grid,
+    .category-grid,
+    .product-grid {
+        grid-template-columns: repeat(1, 1fr);
+        padding: 0 15px;
+    }
+
+    .trust-card {
+        justify-content: center;
+    }
+
+    .category-card {
+        height: 250px;
+    }
+
+    /* Flash Sale Section */
+    .sale-glass-card {
+        flex-direction: column;
+        padding: 40px 20px;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .sale-title {
+        font-size: 28px;
+    }
+
+    .modern-countdown {
+    justify-content: center;
+    margin-bottom: 25px;
+    }
+
+    .timer-box-modern {
+        min-width: 60px;
+        padding: 10px;
+    }
+
+    .sale-visual-side {
+        flex: 1;
+        width: 100%;
+        margin-top: 30px;
+    }
+    
+    /* Grab Deals Button */
+    .shop-electric-btn {
+        width: 60%; 
+        max-width: 300px; 
+        margin: 20px auto 0; 
+        padding: 12px 15px; 
+        font-size: 14px;
+        display: block; 
+        text-align: center;
+        border-radius: 50px;
+    }
+    
+    .electric-orbit-container {
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
+    }
+
+    .image-mask-circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    .ring-1 { width: 240px; height: 240px; }
+    .ring-2 { width: 260px; height: 260px; }
+
+    /* Bag */
+    .bag {
+        width: 100%;
+        right: -100%;
+    }
+
+    /* Modals Adjustment */
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .modal-info h3 {
+        font-size: 20px;
+    }
+
+    .checkout-modal-width {
+        width: 90%;
+    }
+
+    /* Footer Section */
+    .footer-container {
+        display: flex; 
+        flex-direction: column; 
+        gap: 40px;
+        text-align: center;
+    }
+
+    .brand-info, 
+    .footer-col {
+        min-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .brand-info p {
+        max-width: 100%;
+        margin: 0 auto 20px;
+        font-size: 14px;
+    }
+
+    .f-logo {
+        margin: 0 auto 20px;
+    }
+
+    .f-social-icons, 
+    .f-payment {
+        justify-content: center; 
+        gap: 15px;
+    }
+
+    .f-links a:hover {
+        padding-left: 0; 
+    }
+
+    .footer-bottom {
+        padding: 20px 10px;
+    }
+
+}

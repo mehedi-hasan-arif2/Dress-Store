@@ -331,10 +331,7 @@ if (searchInput) {
     };
 }
 
-
-
 /* Start of Cart & Checkout Logic */
-
 let cart = JSON.parse(localStorage.getItem('cart_items')) || [];
 const WHATSAPP_NUMBER = "8801533648004";
 
@@ -489,3 +486,14 @@ if (orderForm) {
 
 // Run Initial UI
 updateCartUI();
+
+
+// Start of Mobile Menu Logic
+const hamburger = document.getElementById('hamburger-menu');
+const navLinks = document.querySelector('.nav-links');
+
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}

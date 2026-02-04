@@ -1051,6 +1051,112 @@
 }
 
 
+/* Start of Search Bar Styles */
+.search-bar-container {
+    position: fixed;
+    top: -120px; 
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 998;
+    padding: 20px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.search-bar-container.active {
+    top: 80px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    background: #dfdbdb;
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: 1px solid #eee;
+}
+
+.search-inner i {
+    color: #666;
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+#search-input {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 16px;
+    color: #222;
+}
+
+/* Search Scroll  */
+#product-container {
+    scroll-margin-top: 230px;
+    transition: all 0.3s ease;
+}
+
+/* Search & Empty State */
+.product-card {
+    animation: smoothEntrance 0.4s ease-out forwards;
+}
+
+@keyframes smoothEntrance {
+    from { 
+        opacity: 0; 
+        transform: scale(0.96) translateY(15px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+    }
+}
+
+.search-feedback {
+    width: 100%;
+    text-align: center; 
+    margin: 30px 0;
+    font-size: 1.1rem;
+    color: #6e6e6e;
+    font-weight: 600;
+}
+
+.no-results-container {
+    grid-column: 1 / -1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px;
+    width: 100%;
+}
+
+.no-results-container i {
+    font-size: 5rem;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.no-results-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.no-results-container p {
+    color: #777;
+    font-size: 1rem;
+}
+
 /* Start of Wishlist Modal */
 #wishlist-drawer {
     position: fixed;

@@ -462,16 +462,31 @@ if (featureAddBtn) {
     }
 });
 
-// WhatsApp Order Engine
+/* Start of WhatsApp Order Engine */
 const orderForm = document.getElementById('order-form');
 if (orderForm) {
     orderForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        
+        // Form Data Extraction
         const name = document.getElementById('cust-name').value;
         const address = document.getElementById('cust-address').value;
+        const phone = document.getElementById('cust-phone').value; 
         const totalBill = document.getElementById('cart-total-amount').innerText;
+        
+        // Dynamic Item Formatting
         let itemDetails = cart.map((item, i) => `${i + 1}. ${item.name} (${item.size}) x${item.qty}`).join('\n');
-        const message = `🛍️ *Order Loom & Luxe*\nItems:\n${itemDetails}\nTotal: ${totalBill}\nName: ${name}\nAddress: ${address}`;
+        
+        // Final Message String
+        const message = `🛍️ *Order From Loom & Luxe*\n\n` +
+                        `*Customer Details:* \n` +
+                        `Name: ${name}\n` +
+                        `Phone: ${phone}\n` +
+                        `Address: ${address}\n\n` +
+                        `*Items Ordered:* \n${itemDetails}\n\n` +
+                        `*Total Bill:* ${totalBill}\n\n` +
+                        `Thanks!`;
+
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
     });
 }
